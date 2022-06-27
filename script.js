@@ -28,15 +28,17 @@ const getObjectID = async () => {
     
     if(publicDomain === true) {
         //filling out the artwork information
-        artworkInfo.innerHTML =`<span>${title}</span><br />
+        artworkInfo.innerHTML =`<h2>Artwork Information</h2>
+                            <span><strong>Title: </strong>${title}</span><br />
                             <img src=${image} alt="artwork" /><br />
-                            <span>${objectDate}</span><br />
-                            <span>${medium}</span><br />
-                            <span>${gallery}</span>`
+                            <span><strong>Artwork Date: </strong>${objectDate}</span><br />
+                            <span><strong>Medium: </strong>${medium}</span><br />
+                            <span><strong>Gallery Location: </strong>${gallery}</span>`
         
         //filling out the artist information
-        artistInfo.innerHTML = `<span>${artistName}</span><br />
-                                <span>${artistNationality}</span>`
+        artistInfo.innerHTML = `<h2>Artist Information</h2>
+                                <span><strong>Artist: </strong>${artistName}</span><br />
+                                <span><strong>Nationality: </strong>${artistNationality}</span>`
 
     } else {
         alert(`Sorry, ${objectID} is not public domain. Please enter a different number.`)

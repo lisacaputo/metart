@@ -1,15 +1,19 @@
 body {
+    font-family: 'Raleway', arial, sans-serif;
+    font-size: 1em;
+    font-weight: 400;
     margin: 0 auto;
     text-align: center;
 }
 
 header {
     background-color: rgb(228, 0, 43);
+    color: white;
     padding: 2rem;
 }
 
-header svg {
-    color: white;
+h1 {
+    font-weight: 300;
 }
 
 main {
@@ -19,7 +23,16 @@ main {
 
 main img {
     border-radius: 3em;
+    margin-bottom: .5rem;
     max-width: 400px;
+}
+
+#artwork-info span {
+    display: block;
+}
+
+#artist-info span {
+    display: block;
 }
 
 footer {
