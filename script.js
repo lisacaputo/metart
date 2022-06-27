@@ -1,6 +1,7 @@
 const button = document.querySelector('button')
 const input = document.querySelector('input')
 const artworkInfo = document.getElementById('artwork-info')
+const artistInfo = document.getElementById('artist-info')
 
 const getObjectID = async () => {
     let objectID = input.value
@@ -26,11 +27,17 @@ const getObjectID = async () => {
     let publicDomain = response.data.isPublicDomain
     
     if(publicDomain === true) {
+        //filling out the artwork information
         artworkInfo.innerHTML =`<span>${title}</span><br />
                             <img src=${image} alt="artwork" /><br />
                             <span>${objectDate}</span><br />
                             <span>${medium}</span><br />
                             <span>${gallery}</span>`
+        
+        //filling out the artist information
+        artistInfo.innerHTML = `<span>${artistName}</span><br />
+                                <span>${artistNationality}</span>`
+
     } else {
         alert(`Sorry, ${objectID} is not public domain. Please enter a different number.`)
     }
