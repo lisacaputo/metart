@@ -1,6 +1,6 @@
 const button = document.querySelector('button')
 const input = document.querySelector('input')
-const contentDiv = document.querySelector('div')
+const artworkInfo = document.getElementById('artwork-info')
 
 const getObjectID = async () => {
     let objectID = input.value
@@ -23,9 +23,18 @@ const getObjectID = async () => {
     let medium = response.data.medium
     //location of artwork in the Met
     let gallery = response.data.GalleryNumber
+    let publicDomain = response.data.isPublicDomain
     
+    if(publicDomain === true) {
+        artworkInfo.innerHTML =`<span>${title}</span><br />
+                            <img src=${image} alt="artwork" /><br />
+                            <span>${objectDate}</span><br />
+                            <span>${medium}</span><br />
+                            <span>${gallery}</span>`
+    } else {
+        alert(`Sorry, ${objectID} is not public domain. Please enter a different number.`)
+    }
     
-    contentDiv.innerHTML =`<span>${title}</span><br /><img src=${image} alt="artwork" />`
  
     console.log(response)
 }

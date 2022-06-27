@@ -1,0 +1,21 @@
+body {
+    margin: 0 auto;
+    text-align: center;
+}
+
+header {
+    background-color: rgb(228, 0, 43);
+    padding: 2rem;
+}
+
+header svg {
+    color: white;
+}
+
+main {
+    padding: 2rem;
+}
+
+main img {
+    max-width: 400px;
+}
