@@ -25,6 +25,14 @@ const getObjectID = async () => {
     //location of artwork in the Met
     let gallery = response.data.GalleryNumber
     let publicDomain = response.data.isPublicDomain
+
+    if(response.data.message === 'ObjectID not found') {
+        alert(`Sorry, ${objectID} is not a valid entry. Please enter a different number.`)
+    }
+    
+    if(objectDate === '') {
+        objectDate.innerHTML = `n/a`
+    }
     
     if(publicDomain === true) {
         //filling out the artwork information
@@ -44,10 +52,10 @@ const getObjectID = async () => {
         alert(`Sorry, ${objectID} is not public domain. Please enter a different number.`)
     }
     
- 
+    console.log(response.data.message);
     console.log(response)
 }
 
 button.addEventListener('click', getObjectID)
 
-//Keep using 459201 as the objectID for testing purposes
+//Keep using 459201, 343523 as the objectID for testing purposes
