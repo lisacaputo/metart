@@ -6,6 +6,7 @@ const artistInfo = document.getElementById('artist-info')
 const getObjectID = async () => {
     const objectID = input.value
     let response
+    //checking if object ID is existent in the database
     //string interpolation being used, below is an endpoint (the url)
     try {
         response = await axios.get(
@@ -16,6 +17,13 @@ const getObjectID = async () => {
         alert(`Sorry, ${objectID} is not a valid entry. Please enter a different number.`)
         return
     }
+
+    // checking properties to be blank
+    for (const property in response.data) {        
+        if(response.data[property] === '') {
+            response.data[property] = 'n/a'
+        }
+   }
 
     //*** Artist Info ***/
     const artistName = response.data.artistDisplayName
@@ -31,39 +39,26 @@ const getObjectID = async () => {
     //location of artwork in the Met
     const gallery = response.data.GalleryNumber
     const publicDomain = response.data.isPublicDomain
-
-    // if(objectDate === '') {
-    //     objectDate.innerHTML = `n/a`
-    // }
-
-    //console.log(response.data);
-
-    // response.data.objectDate = 'hello'
-    // for (const property in response.data) {
-    //     // console.log(property+' hello' + response.data[property] + 'hello');
-    //     // if(response.data[property] === '') {
-    //     //     response.data[property] === 'n/a'
-    //     // }
-
-    //     console.log(`${property}: ${response.data[property]}`);
-    // }
     
-    if(publicDomain === true) {
-        //filling out the artwork information
-        artworkInfo.innerHTML =`<h2>Artwork Information</h2>
+    //filling out the artwork information
+    artworkInfo.innerHTML =`<h2>Artwork Information</h2>
                             <span><strong>Title: </strong>${title}</span><br />
-                            <img src=${image} alt="artwork" /><br />
+                            <img id="artwork-info-img" src=${image} alt="artwork" /><br />
                             <span><strong>Artwork Date: </strong>${objectDate}</span><br />
                             <span><strong>Medium: </strong>${medium}</span><br />
                             <span><strong>Gallery Location: </strong>${gallery}</span>`
         
-        //filling out the artist information
-        artistInfo.innerHTML = `<h2>Artist Information</h2>
-                                <span><strong>Artist: </strong>${artistName}</span><br />
-                                <span><strong>Nationality: </strong>${artistNationality}</span>`
-
-    } else {
-        alert(`Sorry, ${objectID} is not public domain. Please enter a different number.`)
+    //filling out the artist information
+    artistInfo.innerHTML = `<h2>Artist Information</h2>
+                            <span><strong>Artist: </strong>${artistName}</span><br />
+                            <span><strong>Nationality: </strong>${artistNationality}</span>`
+    
+    const artworkInfoImg = document.getElementById('artwork-info-img')
+    const privateDomainMsg = document.createElement('p')
+    privateDomainMsg.innerText = 'This image is not public domain.'
+    
+    if(publicDomain === false) {
+        artworkInfoImg.replaceWith(privateDomainMsg)
     }
     
     console.log(response)
@@ -71,4 +66,4 @@ const getObjectID = async () => {
 
 button.addEventListener('click', getObjectID)
 
-//Keep using 459201, 343523 as the objectID for testing purposes
+//Keep using 459201, 343523, 437133 (this one doesn't have an image that is public) as the objectID for testing purposes
