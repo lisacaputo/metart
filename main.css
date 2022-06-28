@@ -2,6 +2,7 @@ body {
     font-family: 'Raleway', arial, sans-serif;
     font-size: 1em;
     font-weight: 400;
+    line-height: 1.7em;
     margin: 0 auto;
     text-align: center;
 }
@@ -12,23 +13,39 @@ header {
     padding: 2rem;
 }
 
+header a:visited {
+    color: white;
+}
+
 h1 {
     font-weight: 300;
 }
 
+h2 {
+    color: rgb(210, 43, 43);
+}
+
 main {
+    max-width: 700px;
     min-height: 400px;
+    margin: 0 auto;
     padding: 2rem;
 }
 
 main img {
     border-radius: 3em;
-    margin-bottom: .5rem;
+    margin: .5rem 0;
     max-width: 400px;
 }
 
 #artwork-info span {
     display: block;
+}
+
+/* manipulates the messaging for the image not being a public domain */
+#artwork-info p {
+    color: rgb(152, 133, 88);
+    font-style: italic;
 }
 
 #artist-info span {
