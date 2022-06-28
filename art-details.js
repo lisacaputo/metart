@@ -13,7 +13,7 @@ const getObjectID = async () => {
             `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`
         )
     } catch (error) {
-        alert(`Sorry, ${objectID} is not a valid entry. Please enter a different number.`)
+        alert(`Sorry, ${objectID} is not a valid entry. Please enter a different serial number.`)
         return
     }
 
