@@ -1,5 +1,5 @@
 const button = document.querySelector('button')
-const input = document.querySelector('input')
+export const input = document.querySelector('input')
 const artworkInfo = document.getElementById('artwork-info')
 const artistInfo = document.getElementById('artist-info')
 
@@ -53,6 +53,7 @@ const getObjectID = async () => {
                             <span><strong>Artist: </strong>${artistName}</span><br />
                             <span><strong>Nationality: </strong>${artistNationality}</span>`
     
+    //If the public domain is not public, it will not display an image. Therefore, we let the user know the image of the artwork is not available
     const artworkInfoImg = document.getElementById('artwork-info-img')
     const privateDomainMsg = document.createElement('p')
     privateDomainMsg.innerText = 'This image is not public domain.'
