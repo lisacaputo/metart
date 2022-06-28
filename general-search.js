@@ -13,7 +13,7 @@ const getSearchTerm = async () => {
     const objectIDList = response.data.objectIDs
     
     //Display search term list to user
-    generalSearch.innerHTML = `<p>Below is the list of all the artworks containing <strong>${searchTerm}</strong>: ${objectIDList}.</p>`
+    generalSearch.innerHTML = `<p>Below is the list of all the artworks containing <strong class="highlight">${searchTerm}</strong>: ${objectIDList}.</p>`
 
     console.log(response)
 }
