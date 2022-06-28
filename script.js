@@ -4,35 +4,49 @@ const artworkInfo = document.getElementById('artwork-info')
 const artistInfo = document.getElementById('artist-info')
 
 const getObjectID = async () => {
-    let objectID = input.value
+    const objectID = input.value
+    let response
     //string interpolation being used, below is an endpoint (the url)
-    let response = await axios.get(
-        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}
-        `
-    )
+    try {
+        response = await axios.get(
+            `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}
+            `
+        )
+    } catch (error) {
+        alert(`Sorry, ${objectID} is not a valid entry. Please enter a different number.`)
+        return
+    }
 
     //*** Artist Info ***/
-    let artistName = response.data.artistDisplayName
-    let artistNationality = response.data.artistNationality
+    const artistName = response.data.artistDisplayName
+    const artistNationality = response.data.artistNationality
 
     //*** Artwork Info ***/
-    let title = response.data.title
-    let image = response.data.primaryImage
+    const title = response.data.title
+    const image = response.data.primaryImage
     //Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created
-    let objectDate = response.data.objectDate
+    const objectDate = response.data.objectDate
     //Refers to the materials that were used to create the artwork
-    let medium = response.data.medium
+    const medium = response.data.medium
     //location of artwork in the Met
-    let gallery = response.data.GalleryNumber
-    let publicDomain = response.data.isPublicDomain
+    const gallery = response.data.GalleryNumber
+    const publicDomain = response.data.isPublicDomain
 
-    if(response.data.message === 'ObjectID not found') {
-        alert(`Sorry, ${objectID} is not a valid entry. Please enter a different number.`)
-    }
-    
-    if(objectDate === '') {
-        objectDate.innerHTML = `n/a`
-    }
+    // if(objectDate === '') {
+    //     objectDate.innerHTML = `n/a`
+    // }
+
+    //console.log(response.data);
+
+    // response.data.objectDate = 'hello'
+    // for (const property in response.data) {
+    //     // console.log(property+' hello' + response.data[property] + 'hello');
+    //     // if(response.data[property] === '') {
+    //     //     response.data[property] === 'n/a'
+    //     // }
+
+    //     console.log(`${property}: ${response.data[property]}`);
+    // }
     
     if(publicDomain === true) {
         //filling out the artwork information
@@ -52,7 +66,6 @@ const getObjectID = async () => {
         alert(`Sorry, ${objectID} is not public domain. Please enter a different number.`)
     }
     
-    console.log(response.data.message);
     console.log(response)
 }
 
