@@ -1,4 +1,3 @@
-
 //Variables
 const button = document.querySelector('button')
 const input = document.querySelector('input')
@@ -12,6 +11,7 @@ const getSearchTerm = async () => {
     let response = await axios.get(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm}`
     )
+
     
     //List of Object IDs that contain the search term
     const objectIDList = response.data.objectIDs

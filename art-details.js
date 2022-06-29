@@ -7,6 +7,7 @@ const artistInfo = document.getElementById('artist-info')
 //API Function
 const getObjectID = async () => {
     const objectID = input.value
+    localStorage.setItem('objectID',objectID)
     let response
     //checking if object ID is existent in the database
     //string interpolation being used, below is an endpoint (the url)
@@ -24,7 +25,11 @@ const getObjectID = async () => {
         if(response.data[property] === '') {
             response.data[property] = 'n/a'
         }
-   }
+    }
+
+    const currentObjectID = localStorage.getItem('objectID')
+    console.log(currentObjectID);
+    
 
     //*** Artist Info ***/
     const artistName = response.data.artistDisplayName
