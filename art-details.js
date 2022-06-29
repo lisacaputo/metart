@@ -1,8 +1,10 @@
+//Variables
 const button = document.querySelector('button')
 const input = document.querySelector('input')
 const artworkInfo = document.getElementById('artwork-info')
 const artistInfo = document.getElementById('artist-info')
 
+//API Function
 const getObjectID = async () => {
     const objectID = input.value
     let response

@@ -60,6 +60,19 @@ main img {
     max-width: 100%;
 }
 
+/* Hiding the artwork content to drive to secondary page, so on click - JS will make the copy appear */
+#general-search+p {
+    opacity: 0;
+}
+
+#object-id-list span::after {
+    content: ', ';
+}
+
+#object-id-list span:last-child:after {
+    content: '';
+}
+
 #artwork-info span {
     display: block;
 }
